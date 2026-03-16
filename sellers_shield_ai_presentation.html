@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMG x Sellers Shield — AI Growth Strategy</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,700&display=swap');
+
+  :root {
+    --bg:           #07070d;
+    --surface:      #0c0c14;
+    --card:         #111119;
+    --border:       #1c1c2e;
+    --accent:       #5832d1;
+    --accent-light: #7b5af5;
+    --accent3:      #22d68a;
+    --accent4:      #f5a623;
+    --text:         #ededf5;
+    --muted:        #64648c;
+    --hot:          #e84f6b;
+    --cold:         #4ab8e8;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter Tight', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV DOTS ── */
+  .nav-dots {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 100;
+  }
+  .nav-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--border);
+    cursor: pointer;
+    transition: background .25s, transform .25s;
+  }
+  .nav-dot.active,
+  .nav-dot:hover { background: var(--accent); transform: scale(1.6); }
+
+  /* ── SLIDES ── */
+  .slide {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 100px 90px;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .slide-number {
+    position: absolute;
+    top: 32px;
+    left: 100px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  /* ── TAGS ── */
+  .tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+  }
+  .tag-purple { background: rgba(88,50,209,.14); color: var(--accent-light); border: 1px solid rgba(88,50,209,.28); }
+  .tag-green  { background: rgba(34,214,138,.10); color: var(--accent3);     border: 1px solid rgba(34,214,138,.22); }
+  .tag-orange { background: rgba(245,166,35,.10);  color: var(--accent4);    border: 1px solid rgba(245,166,35,.22); }
+  .tag-red    { background: rgba(232,79,107,.10);  color: var(--hot);        border: 1px solid rgba(232,79,107,.22); }
+  .tag-blue   { background: rgba(74,184,232,.10);  color: var(--cold);       border: 1px solid rgba(74,184,232,.22); }
+
+  /* ── TYPOGRAPHY ── */
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(34px, 5vw, 62px);
+    font-weight: 800;
+    line-height: 1.06;
+  }
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 3vw, 38px);
+    font-weight: 700;
+    line-height: 1.12;
+    margin-bottom: 10px;
+  }
+  h3 { font-size: 16px; font-weight: 700; margin-bottom: 10px; letter-spacing: .02em; text-transform: uppercase; }
+  p  { color: var(--muted); line-height: 1.72; font-size: 16px; }
+
+  .accent-line {
+    width: 36px; height: 2px;
+    background: var(--accent);
+    margin-bottom: 20px;
+    flex-shrink: 0;
+  }
+
+  /* ── GRID ── */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr;        gap: 20px; width: 100%; max-width: 1100px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; width: 100%; max-width: 1100px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; width: 100%; max-width: 1100px; }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 34px;
+  }
+  .card-accent-purple { border-top: 2px solid var(--accent); }
+  .card-accent-green  { border-top: 2px solid var(--accent3); }
+  .card-accent-orange { border-top: 2px solid var(--accent4); }
+  .card-accent-red    { border-top: 2px solid var(--hot); }
+  .card-accent-blue   { border-top: 2px solid var(--cold); }
+
+  /* ════════════════════════════════
+     SLIDE 1 — HERO
+  ════════════════════════════════ */
+  #s1 {
+    background:
+      radial-gradient(ellipse 70% 55% at 50% 0%, rgba(88,50,209,.22) 0%, transparent 65%),
+      var(--bg);
+    text-align: center;
+  }
+  #s1 h1 {
+    background: linear-gradient(140deg, #ffffff 35%, var(--accent-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-sub {
+    font-size: 19px;
+    color: var(--muted);
+    margin-top: 16px;
+    font-weight: 400;
+    max-width: 600px;
+    line-height: 1.65;
+  }
+  .hero-meta { display: flex; gap: 18px; margin-top: 44px; justify-content: center; flex-wrap: wrap; }
+  .hero-chip {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 18px 26px;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: .5px;
+    text-align: left;
+  }
+  .hero-chip span {
+    display: block;
+    font-weight: 700;
+    color: var(--text);
+    font-size: 15px;
+    margin-top: 6px;
+    letter-spacing: 0;
+  }
+
+  /* ════════════════════════════════
+     SLIDE 2 — PAIN POINTS
+  ════════════════════════════════ */
+  #s2 { background: var(--surface); }
+  .pain-list { list-style: none; }
+  .pain-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .pain-list li:last-child { border-bottom: none; }
+  .pain-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 5px;
+  }
+  .pain-title { font-weight: 600; color: var(--text); font-size: 15px; }
+  .pain-desc  { color: var(--muted); font-size: 13px; margin-top: 3px; line-height: 1.55; }
+
+  /* ── STAT BOXES ── */
+  .stat-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 28px 22px;
+    text-align: center;
+  }
+  .stat-num   { font-size: 50px; font-weight: 900; line-height: 1; font-family: 'Playfair Display', serif; }
+  .stat-label { font-size: 12px; color: var(--muted); margin-top: 8px; text-transform: uppercase; letter-spacing: 1.5px; }
+
+  /* ════════════════════════════════
+     SLIDE 3 — AI FUNNEL
+  ════════════════════════════════ */
+  #s3 { background: var(--bg); }
+  .funnel-wrap { display: flex; align-items: stretch; width: 100%; max-width: 1100px; }
+  .funnel-step {
+    flex: 1;
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 28px 18px;
+    position: relative;
+    text-align: center;
+  }
+  .funnel-step:first-child { border-radius: 3px 0 0 3px; }
+  .funnel-step:last-child  { border-radius: 0 3px 3px 0; }
+  .funnel-step:not(:last-child)::after {
+    content: '›';
+    position: absolute; right: -13px; top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px; color: var(--accent); z-index: 2;
+    font-weight: 300; line-height: 1;
+  }
+  .funnel-step-num {
+    font-size: 10px; font-weight: 700; letter-spacing: 2px;
+    color: var(--muted); text-transform: uppercase; margin-bottom: 10px;
+  }
+  .funnel-title { font-size: 14px; font-weight: 700; color: var(--text); letter-spacing: .02em; }
+  .funnel-desc  { font-size: 12px; color: var(--muted); margin-top: 8px; line-height: 1.55; }
+  .funnel-badge {
+    display: inline-block; font-size: 10px; font-weight: 700;
+    padding: 4px 11px; border-radius: 2px; margin-top: 10px;
+    letter-spacing: 1.5px; text-transform: uppercase;
+  }
+
+  /* ════════════════════════════════
+     SLIDE 4 — LEAD SCORING
+  ════════════════════════════════ */
+  #s4 { background: var(--surface); }
+  .lead-split { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; width: 100%; max-width: 1100px; }
+  .lead-card {
+    background: var(--card);
+    border-radius: 3px;
+    padding: 36px;
+    border: 1px solid var(--border);
+  }
+  .lead-hot  { border-top: 2px solid var(--hot); }
+  .lead-cold { border-top: 2px solid var(--cold); }
+  .lead-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 20px; }
+  .lead-badge {
+    font-size: 10px; font-weight: 800; letter-spacing: 3px;
+    text-transform: uppercase; padding: 6px 13px; border-radius: 2px;
+    white-space: nowrap; margin-top: 3px;
+  }
+  .lead-badge-hot  { background: rgba(232,79,107,.14); color: var(--hot); }
+  .lead-badge-cold { background: rgba(74,184,232,.14); color: var(--cold); }
+  .lead-type    { font-size: 23px; font-weight: 800; font-family: 'Playfair Display', serif; }
+  .lead-subtext { font-size: 13px; color: var(--muted); margin-top: 3px; }
+  .lead-steps { list-style: none; }
+  .lead-steps li {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 12px 0; border-bottom: 1px solid var(--border);
+    font-size: 14px; color: var(--text);
+  }
+  .lead-steps li:last-child { border-bottom: none; }
+  .step-num {
+    width: 20px; height: 20px; border-radius: 2px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; font-weight: 800; flex-shrink: 0;
+  }
+  .step-hot  { background: rgba(232,79,107,.14); color: var(--hot); }
+  .step-cold { background: rgba(74,184,232,.14); color: var(--cold); }
+  .lead-note {
+    margin-top: 18px; padding: 15px 18px;
+    border-radius: 3px; font-size: 13px; color: var(--muted); line-height: 1.6;
+  }
+
+  /* ════════════════════════════════
+     SLIDE 5 — ECOSYSTEM MAP
+  ════════════════════════════════ */
+  #s5 { background: var(--bg); }
+  .eco-wrap { width: 100%; max-width: 1100px; }
+  .eco-row { display: flex; gap: 10px; margin-bottom: 10px; align-items: stretch; }
+  .eco-node {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 20px 18px;
+    flex: 1;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .eco-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 4px;
+  }
+  .eco-node-title { font-size: 14px; font-weight: 700; color: var(--text); }
+  .eco-node-desc  { font-size: 12px; color: var(--muted); line-height: 1.55; margin-top: 3px; }
+  .eco-arrow {
+    display: flex; align-items: center; justify-content: center;
+    color: var(--accent); font-size: 20px; flex-shrink: 0;
+    padding: 0 2px; font-weight: 300;
+  }
+  .eco-center {
+    background: linear-gradient(135deg, rgba(88,50,209,.16), rgba(88,50,209,.03));
+    border-color: rgba(88,50,209,.32);
+  }
+
+  /* ════════════════════════════════
+     SLIDE 6 — LIST ACTIVATION
+  ════════════════════════════════ */
+  #s6 { background: var(--surface); }
+  .incentive-block {
+    width: 100%; max-width: 1100px; margin-bottom: 22px;
+    background: linear-gradient(135deg, rgba(88,50,209,.12), rgba(34,214,138,.05));
+    border: 1px solid rgba(88,50,209,.28);
+    border-radius: 3px; padding: 22px 26px;
+    display: flex; align-items: flex-start; gap: 24px;
+  }
+  .incentive-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--accent-light); margin-bottom: 8px;
+  }
+  .incentive-title { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+  .incentive-badge {
+    flex-shrink: 0; text-align: center;
+    background: rgba(34,214,138,.08);
+    border: 1px solid rgba(34,214,138,.2);
+    border-radius: 3px; padding: 14px 18px; min-width: 110px;
+  }
+  .incentive-badge-num { font-size: 20px; font-weight: 900; color: var(--accent3); font-family: 'Playfair Display', serif; }
+  .incentive-badge-label { font-size: 9px; color: var(--muted); margin-top: 4px; letter-spacing: 1px; text-transform: uppercase; }
+
+  .activation-flow { display: flex; align-items: stretch; width: 100%; max-width: 1100px; margin-bottom: 26px; }
+  .act-step {
+    flex: 1; background: var(--card); border: 1px solid var(--border);
+    padding: 26px 16px; text-align: center; position: relative;
+  }
+  .act-step:first-child { border-radius: 3px 0 0 3px; }
+  .act-step:last-child  { border-radius: 0 3px 3px 0; }
+  .act-step:not(:last-child)::after {
+    content: '›';
+    position: absolute; right: -13px; top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px; color: var(--accent4); z-index: 2;
+    font-weight: 300; line-height: 1;
+  }
+  .act-num   { font-size: 10px; font-weight: 700; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; margin-bottom: 9px; }
+  .act-title { font-size: 14px; font-weight: 700; color: var(--text); }
+  .act-desc  { font-size: 12px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+
+  /* Bar chart */
+  .bar-chart { display: flex; flex-direction: column; gap: 11px; width: 100%; max-width: 1100px; }
+  .bar-row   { display: flex; align-items: center; gap: 12px; }
+  .bar-label { width: 200px; font-size: 13px; font-weight: 600; color: var(--muted); text-align: right; flex-shrink: 0; }
+  .bar-track { flex: 1; height: 28px; background: var(--border); border-radius: 2px; overflow: hidden; }
+  .bar-fill  {
+    height: 100%; border-radius: 2px;
+    display: flex; align-items: center; padding-left: 12px;
+    font-size: 11px; font-weight: 700; color: #fff; letter-spacing: .5px;
+  }
+  .bar-val   { width: 56px; font-size: 13px; font-weight: 700; color: var(--text); flex-shrink: 0; }
+  .bar-note  { font-size: 13px; color: var(--muted); margin-top: 14px; padding-left: 2px; }
+
+  /* ════════════════════════════════
+     SLIDE 7 — PROGRAMMATIC SEO
+  ════════════════════════════════ */
+  #s7 { background: var(--bg); }
+  .seo-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 26px; width: 100%; max-width: 1100px; }
+  .seo-stat-stack { display: flex; flex-direction: column; gap: 13px; }
+  .big-stat {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 3px; padding: 28px 24px;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .big-num   { font-size: 58px; font-weight: 900; line-height: 1; font-family: 'Playfair Display', serif; }
+  .big-label { font-size: 13px; color: var(--muted); line-height: 1.5; }
+  .llm-table { width: 100%; border-collapse: collapse; }
+  .llm-table th {
+    text-align: left; font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--muted); padding: 12px 16px; border-bottom: 1px solid var(--border);
+  }
+  .llm-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); font-size: 14px; }
+  .llm-table tr:last-child td { border-bottom: none; }
+  .llm-table tr:hover td { background: rgba(88,50,209,.04); }
+  .pill {
+    display: inline-block; padding: 3px 9px; border-radius: 2px;
+    font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+  }
+  .pill-high   { background: rgba(34,214,138,.12); color: var(--accent3); }
+  .pill-medium { background: rgba(245,166,35,.12);  color: var(--accent4); }
+  .pill-low    { background: rgba(74,184,232,.12);  color: var(--cold); }
+  .insight-block {
+    margin-top: 18px; padding: 15px 16px;
+    background: rgba(34,214,138,.05);
+    border: 1px solid rgba(34,214,138,.18);
+    border-radius: 3px;
+  }
+
+  /* ════════════════════════════════
+     SLIDE 8 — ROADMAP
+  ════════════════════════════════ */
+  #s8 { background: var(--surface); }
+  .timeline { width: 100%; max-width: 1100px; }
+  .timeline-item {
+    display: flex; gap: 22px; padding: 22px 0;
+    border-bottom: 1px solid var(--border); align-items: flex-start;
+  }
+  .timeline-item:last-child { border-bottom: none; }
+  .tl-phase {
+    width: 90px; flex-shrink: 0;
+    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
+    padding-top: 4px; line-height: 1.6;
+  }
+  .tl-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+  .tl-content { flex: 1; }
+  .tl-title { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+  .tl-items { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+  .tl-items li { font-size: 14px; color: var(--muted); display: flex; gap: 8px; align-items: flex-start; line-height: 1.55; }
+  .tl-items li::before { content: '—'; color: var(--accent); flex-shrink: 0; font-size: 11px; margin-top: 1px; }
+
+  /* ════════════════════════════════
+     SLIDE 9 — CTA
+  ════════════════════════════════ */
+  #s9 {
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 100%, rgba(88,50,209,.2) 0%, transparent 65%),
+      var(--bg);
+    text-align: center;
+  }
+  #s9 h2 { font-size: clamp(26px, 4vw, 48px); font-weight: 800; }
+  .cta-boxes { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 34px; max-width: 760px; }
+  .cta-box {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 3px; padding: 24px 16px;
+  }
+  .cta-num   { font-size: 44px; font-weight: 900; color: var(--accent); font-family: 'Playfair Display', serif; }
+  .cta-label { font-size: 13px; color: var(--muted); margin-top: 8px; line-height: 1.55; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .slide > * { animation: fadeUp .5s ease both; }
+  .slide > *:nth-child(1) { animation-delay: .08s; }
+  .slide > *:nth-child(2) { animation-delay: .16s; }
+  .slide > *:nth-child(3) { animation-delay: .24s; }
+  .slide > *:nth-child(4) { animation-delay: .32s; }
+  .slide > *:nth-child(5) { animation-delay: .40s; }
+  .slide > *:nth-child(6) { animation-delay: .48s; }
+
+  /* ════════════════════════════════
+     RESPONSIVE — TABLET
+  ════════════════════════════════ */
+  @media (max-width: 1024px) {
+    .slide { padding: 80px 52px 72px; }
+    .slide-number { left: 52px; }
+    .seo-grid { grid-template-columns: 1fr; }
+    .big-num  { font-size: 46px; }
+    .stat-num { font-size: 42px; }
+  }
+
+  /* ════════════════════════════════
+     RESPONSIVE — MOBILE
+  ════════════════════════════════ */
+  @media (max-width: 768px) {
+    .slide { padding: 60px 20px 48px; }
+    .slide-number { left: 20px; top: 20px; font-size: 9px; }
+    .nav-dots { display: none; }
+
+    h1 { font-size: clamp(28px, 8vw, 40px); }
+    h2 { font-size: clamp(20px, 6vw, 30px); }
+    h3 { font-size: 13px; }
+    p  { font-size: 14px; }
+    .big-num { font-size: 38px; }
+    .stat-num { font-size: 32px; }
+    .pain-title { font-size: 13px; }
+    .pain-desc  { font-size: 12px; }
+    .funnel-title { font-size: 12px; }
+    .funnel-desc  { font-size: 10px; }
+    .lead-type    { font-size: 18px; }
+    .lead-steps li { font-size: 12px; }
+    .eco-node-title { font-size: 12px; }
+    .eco-node-desc  { font-size: 10px; }
+    .act-title { font-size: 12px; }
+    .act-desc  { font-size: 10px; }
+    .tl-title  { font-size: 15px; }
+    .tl-items li { font-size: 12px; }
+    .incentive-title { font-size: 15px; }
+    .hero-sub  { font-size: 15px; }
+    .card { padding: 20px; }
+    .lead-card { padding: 22px; }
+    .cta-num { font-size: 36px; }
+
+    /* Grids */
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; gap: 12px; }
+    .lead-split   { grid-template-columns: 1fr; gap: 14px; }
+    .seo-grid     { grid-template-columns: 1fr; gap: 16px; }
+    .cta-boxes    { grid-template-columns: 1fr; max-width: 100%; }
+    .pricing-grid { grid-template-columns: 1fr !important; }
+    .hero-meta    { flex-direction: column; gap: 10px; }
+    .hero-chip    { text-align: left; }
+
+    /* Funnel — vertical stack */
+    .funnel-wrap  { flex-direction: column; gap: 0; }
+    .funnel-step  { border-radius: 0 !important; border-top: none; }
+    .funnel-step:first-child { border-radius: 3px 3px 0 0 !important; border-top: 1px solid var(--border); }
+    .funnel-step:last-child  { border-radius: 0 0 3px 3px !important; }
+    .funnel-step:not(:last-child)::after {
+      content: '›';
+      right: auto; left: 50%;
+      top: auto; bottom: -15px;
+      transform: translateX(-50%) rotate(90deg);
+      font-size: 22px;
+    }
+    .funnel-step { padding: 18px 14px; }
+
+    /* Activation flow — vertical stack */
+    .activation-flow { flex-direction: column; gap: 0; }
+    .act-step  { border-radius: 0 !important; border-top: none; }
+    .act-step:first-child { border-radius: 3px 3px 0 0 !important; border-top: 1px solid var(--border); }
+    .act-step:last-child  { border-radius: 0 0 3px 3px !important; }
+    .act-step:not(:last-child)::after {
+      content: '›';
+      right: auto; left: 50%;
+      top: auto; bottom: -15px;
+      transform: translateX(-50%) rotate(90deg);
+      font-size: 22px;
+    }
+
+    /* Ecosystem rows — vertical */
+    .eco-row   { flex-direction: column; gap: 6px; }
+    .eco-arrow { transform: rotate(90deg); height: 20px; justify-content: center; }
+
+    /* Incentive block */
+    .incentive-block  { flex-direction: column; gap: 16px; }
+    .incentive-badge  { align-self: flex-start; }
+
+    /* Bar chart */
+    .bar-label { width: 120px; font-size: 10px; }
+    .bar-val   { width: 38px; font-size: 10px; }
+
+    /* Timeline */
+    .timeline-item { gap: 12px; padding: 18px 0; }
+    .tl-phase { width: 56px; font-size: 8px; }
+    .tl-dot   { width: 8px; height: 8px; }
+
+    /* LLM table — hide current visibility col */
+    .llm-table th:nth-child(2),
+    .llm-table td:nth-child(2) { display: none; }
+
+    /* Stat boxes */
+    .grid-3 .stat-box { padding: 18px 14px; }
+  }
+
+  @media (max-width: 480px) {
+    .slide { padding: 52px 14px 40px; }
+    .bar-label { display: none; }
+    .bar-row   { gap: 8px; }
+    h1 { font-size: clamp(26px, 9vw, 36px); }
+    h2 { font-size: clamp(19px, 7vw, 26px); }
+    .hero-sub  { font-size: 14px; }
+    .card { padding: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV DOTS -->
+<nav class="nav-dots" id="navDots"></nav>
+
+<!-- ════════════════════════════════════
+     SLIDE 1 — HERO
+════════════════════════════════════ -->
+<section class="slide" id="s1">
+  <div class="tag tag-purple">March 12, 2026 &middot; Discovery Call</div>
+  <h1>AI Growth System<br>for Sellers Shield</h1>
+  <p class="hero-sub">A full-funnel AI strategy: lead nurturing, list activation, and LLM visibility</p>
+  <div class="hero-meta">
+    <div class="hero-chip">Presented by<span>Adventure Media Group</span></div>
+    <div class="hero-chip">Platforms Covered<span>Meta &middot; HubSpot &middot; WhatsApp &middot; GA4</span></div>
+    <div class="hero-chip">Opportunity<span>Agents &middot; Brokers &middot; Sellers</span></div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     SLIDE 2 — CURRENT STATE
+════════════════════════════════════ -->
+<section class="slide" id="s2">
+  <span class="slide-number">01 &mdash; Current State</span>
+  <div class="tag tag-red">Where Things Stand Today</div>
+  <h2>The Core Problems</h2>
+  <div class="grid-2" style="margin-top:26px;">
+    <div class="card card-accent-red">
+      <h3>Outbound Challenges</h3>
+      <ul class="pain-list">
+        <li>
+          <span class="pain-dot" style="background:var(--hot);"></span>
+          <div>
+            <div class="pain-title">Stale broker-sourced lists</div>
+            <div class="pain-desc">MLS data pulled years ago — contacts bounced or gone</div>
+          </div>
+        </li>
+        <li>
+          <span class="pain-dot" style="background:var(--hot);"></span>
+          <div>
+            <div class="pain-title">Cold email without consent</div>
+            <div class="pain-desc">No opt-in means high unsubscribe risk and damaged sender reputation</div>
+          </div>
+        </li>
+        <li>
+          <span class="pain-dot" style="background:var(--hot);"></span>
+          <div>
+            <div class="pain-title">Manual dialer — one person</div>
+            <div class="pain-desc">Hundreds of dials per day but only 50% of agents have listing transactions</div>
+          </div>
+        </li>
+        <li>
+          <span class="pain-dot" style="background:var(--hot);"></span>
+          <div>
+            <div class="pain-title">No qualification filter</div>
+            <div class="pain-desc">Reaching agents who don't list — wasted effort at every step</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="card card-accent-orange">
+      <h3>Digital Visibility Gaps</h3>
+      <ul class="pain-list">
+        <li>
+          <span class="pain-dot" style="background:var(--accent4);"></span>
+          <div>
+            <div class="pain-title">Low AI visibility score</div>
+            <div class="pain-desc">Only showing up for branded queries in ChatGPT and Perplexity</div>
+          </div>
+        </li>
+        <li>
+          <span class="pain-dot" style="background:var(--accent4);"></span>
+          <div>
+            <div class="pain-title">Website chat is passive</div>
+            <div class="pain-desc">Static forms, slow follow-up — no 24/7 engagement</div>
+          </div>
+        </li>
+        <li>
+          <span class="pain-dot" style="background:var(--accent4);"></span>
+          <div>
+            <div class="pain-title">No nurture touchpoints</div>
+            <div class="pain-desc">Leads fall through after the first email sequence ends</div>
+          </div>
+        </li>
+        <li>
+          <span class="pain-dot" style="background:var(--accent4);"></span>
+          <div>
+            <div class="pain-title">Fragmented strategy</div>
+            <div class="pain-desc">Ads running but no flywheel connecting all touchpoints</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     SLIDE 3 — THE AI FUNNEL
+════════════════════════════════════ -->
+<section class="slide" id="s3">
+  <span class="slide-number">02 &mdash; The System</span>
+  <div class="tag tag-purple">Proven AI Ecosystem</div>
+  <h2>How the Full Funnel Works</h2>
+  <p style="margin-bottom:28px;">Built and validated for a NYC real estate agency &mdash; 900 pages of knowledge, 4.5 hours of webinar content trained</p>
+  <div class="funnel-wrap">
+    <div class="funnel-step" style="border-top:2px solid var(--accent);">
+      <div class="funnel-step-num">Step 01</div>
+      <div class="funnel-title">Meta Ads</div>
+      <div class="funnel-desc">Targeted creative drives agents and brokers to Messenger</div>
+      <span class="funnel-badge" style="background:rgba(88,50,209,.18);color:var(--accent-light);">Traffic</span>
+    </div>
+    <div class="funnel-step" style="border-top:2px solid var(--accent4);">
+      <div class="funnel-step-num">Step 02</div>
+      <div class="funnel-title">Messenger AI Agent</div>
+      <div class="funnel-desc">Answers questions, nurtures, and scores leads as hot or cold</div>
+      <span class="funnel-badge" style="background:rgba(245,166,35,.18);color:var(--accent4);">Qualify</span>
+    </div>
+    <div class="funnel-step" style="border-top:2px solid var(--accent3);">
+      <div class="funnel-step-num">Step 03</div>
+      <div class="funnel-title">CRM Update</div>
+      <div class="funnel-desc">Hot leads pushed to HubSpot with full contact data — auto-enrolled</div>
+      <span class="funnel-badge" style="background:rgba(34,214,138,.18);color:var(--accent3);">Capture</span>
+    </div>
+    <div class="funnel-step" style="border-top:2px solid var(--cold);">
+      <div class="funnel-step-num">Step 04</div>
+      <div class="funnel-title">Email Sequence</div>
+      <div class="funnel-desc">Automated drip via HubSpot with targeted CTAs</div>
+      <span class="funnel-badge" style="background:rgba(74,184,232,.18);color:var(--cold);">Nurture</span>
+    </div>
+    <div class="funnel-step" style="border-top:2px solid var(--hot);">
+      <div class="funnel-step-num">Step 05</div>
+      <div class="funnel-title">WhatsApp Agent</div>
+      <div class="funnel-desc">Converts warm leads and escalates ultra-hot to a human instantly</div>
+      <span class="funnel-badge" style="background:rgba(232,79,107,.18);color:var(--hot);">Convert</span>
+    </div>
+  </div>
+  <div class="grid-3" style="margin-top:22px;">
+    <div class="stat-box">
+      <div class="stat-num" style="color:var(--accent);">24/7</div>
+      <div class="stat-label">AI coverage — zero rep hours</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num" style="color:var(--accent3);">24h</div>
+      <div class="stat-label">Messenger re-engagement window used as Trojan horse</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num" style="color:var(--accent4);">1-click</div>
+      <div class="stat-label">Human takeover via unified dashboard</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     SLIDE 4 — LEAD SCORING
+════════════════════════════════════ -->
+<section class="slide" id="s4">
+  <span class="slide-number">03 &mdash; Lead Intelligence</span>
+  <div class="tag tag-orange">AI Lead Scoring</div>
+  <h2>Hot vs. Cold &mdash; What Happens Next</h2>
+  <div class="lead-split" style="margin-top:26px;">
+    <div class="lead-card lead-hot">
+      <div class="lead-header">
+        <span class="lead-badge lead-badge-hot">Hot Lead</span>
+        <div>
+          <div class="lead-type" style="color:var(--hot);">High Intent</div>
+          <div class="lead-subtext">Fast timeline &middot; large budget &middot; ready to act</div>
+        </div>
+      </div>
+      <ul class="lead-steps">
+        <li><span class="step-num step-hot">1</span>Agent detects urgency signals ("buy ASAP", large budget)</li>
+        <li><span class="step-num step-hot">2</span>Lead pushed to CRM immediately with full contact data</li>
+        <li><span class="step-num step-hot">3</span>WhatsApp sequence activated for deep nurture</li>
+        <li><span class="step-num step-hot">4</span>Director's WhatsApp link shared for direct connect</li>
+        <li><span class="step-num step-hot">5</span>CRM notes updated after every conversation turn</li>
+      </ul>
+      <div class="lead-note" style="background:rgba(232,79,107,.07);border:1px solid rgba(232,79,107,.15);">
+        <strong style="color:var(--hot);">Example trigger:</strong> "How soon? &rarr; ASAP" + "Budget? &rarr; $10M" &rarr; Director link sent immediately
+      </div>
+    </div>
+    <div class="lead-card lead-cold">
+      <div class="lead-header">
+        <span class="lead-badge lead-badge-cold">Cold Lead</span>
+        <div>
+          <div class="lead-type" style="color:var(--cold);">Low Intent</div>
+          <div class="lead-subtext">No timeline &middot; vague signals &middot; not yet ready</div>
+        </div>
+      </div>
+      <ul class="lead-steps">
+        <li><span class="step-num step-cold">1</span>Agent answers questions politely — no aggressive push</li>
+        <li><span class="step-num step-cold">2</span>Conversation ends gracefully — no sales rep time wasted</li>
+        <li><span class="step-num step-cold">3</span>Lead tagged as cold in CRM for future re-targeting</li>
+        <li><span class="step-num step-cold">4</span>Available for lookalike audience building</li>
+        <li><span class="step-num step-cold">5</span>Re-entered into funnel if behavior changes</li>
+      </ul>
+      <div class="lead-note" style="background:rgba(74,184,232,.07);border:1px solid rgba(74,184,232,.15);">
+        <strong style="color:var(--cold);">Key benefit:</strong> Sales reps only touch hot leads — no more sifting through hundreds of dead calls
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     SLIDE 5 — ECOSYSTEM MAP
+════════════════════════════════════ -->
+<section class="slide" id="s5">
+  <span class="slide-number">04 &mdash; Architecture</span>
+  <div class="tag tag-green">Full Ecosystem Map</div>
+  <h2>Every Channel. One Connected System.</h2>
+  <div class="eco-wrap" style="margin-top:26px;">
+
+    <!-- Row 1: Traffic sources -->
+    <div class="eco-row">
+      <div class="eco-node" style="border-top:2px solid var(--accent);">
+        <div class="eco-label">Traffic</div>
+        <div class="eco-node-title">Meta Ads</div>
+        <div class="eco-node-desc">Creatives targeting agents and brokers</div>
+      </div>
+      <div class="eco-arrow">&rsaquo;</div>
+      <div class="eco-node eco-center" style="flex:2;">
+        <div class="eco-label">Core</div>
+        <div class="eco-node-title">Messenger AI Agent</div>
+        <div class="eco-node-desc">Trained on 900 pages + 4.5hrs of content &middot; Lead scoring &middot; 24-hr re-engagement window</div>
+      </div>
+      <div class="eco-arrow">&rsaquo;</div>
+      <div class="eco-node" style="border-top:2px solid var(--accent3);">
+        <div class="eco-label">Capture</div>
+        <div class="eco-node-title">CRM (HubSpot)</div>
+        <div class="eco-node-desc">Auto-populated with lead data and conversation summaries</div>
+      </div>
+    </div>
+
+    <!-- Row 2: Nurture channels -->
+    <div class="eco-row">
+      <div class="eco-node" style="border-top:2px solid var(--cold);">
+        <div class="eco-label">Inbound</div>
+        <div class="eco-node-title">Website Agent</div>
+        <div class="eco-node-desc">24/7 live chat — feeds leads back to CRM</div>
+      </div>
+      <div class="eco-arrow">&updownarrow;</div>
+      <div class="eco-node" style="border-top:2px solid var(--accent4); flex:2;">
+        <div class="eco-label">Nurture</div>
+        <div class="eco-node-title">Email Sequence (HubSpot)</div>
+        <div class="eco-node-desc">Automated drip with CTAs leading to WhatsApp agent for deep-funnel conversion</div>
+      </div>
+      <div class="eco-arrow">&rsaquo;</div>
+      <div class="eco-node" style="border-top:2px solid var(--hot);">
+        <div class="eco-label">Convert</div>
+        <div class="eco-node-title">WhatsApp Agent</div>
+        <div class="eco-node-desc">Bottom-of-funnel conversion and human escalation</div>
+      </div>
+    </div>
+
+    <!-- Row 3: SEO + control -->
+    <div class="eco-row">
+      <div class="eco-node" style="border-top:2px solid var(--accent3);">
+        <div class="eco-label">Organic</div>
+        <div class="eco-node-title">Programmatic SEO</div>
+        <div class="eco-node-desc">3,500-word articles &middot; LLM discoverability &middot; 3K clicks since Dec 2025</div>
+      </div>
+      <div class="eco-arrow">&rsaquo;</div>
+      <div class="eco-node" style="flex:2; border-top:2px solid var(--accent);">
+        <div class="eco-label">Control</div>
+        <div class="eco-node-title">Unified Dashboard — Human Override</div>
+        <div class="eco-node-desc">View all Messenger, WhatsApp, and Website conversations &middot; 1-click takeover &middot; Full conversation history</div>
+      </div>
+      <div class="eco-arrow">&rsaquo;</div>
+      <div class="eco-node" style="border-top:2px solid var(--accent4);">
+        <div class="eco-label">Insight</div>
+        <div class="eco-node-title">Analytics &amp; Reporting</div>
+        <div class="eco-node-desc">Lead scores, conversion rates, engagement trends</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     SLIDE 6 — LIST ACTIVATION
+════════════════════════════════════ -->
+<section class="slide" id="s6">
+  <span class="slide-number">05 &mdash; Quick Win</span>
+  <div class="tag tag-orange">List Activation Strategy</div>
+  <h2>Warming Your Cold Broker Lists</h2>
+  <p style="margin-bottom:20px;max-width:860px;">The problem: you have emails but no consent. The solution: use Meta to bridge the gap — and Sellers Shield's free incentive is the perfect hook to make agents raise their hand.</p>
+
+  <div class="incentive-block">
+    <div style="flex:1;">
+      <div class="incentive-label">The Hook</div>
+      <div class="incentive-title">Sellers Shield's Free Agent Incentive</div>
+      <p style="font-size:13px;">Sellers Shield offers agents a <strong style="color:var(--accent3);">free trial or valuable resource</strong> in exchange for opting in — this becomes the ad's CTA. Agents get real value upfront, Sellers Shield gets explicit permission to communicate. No more cold outreach risk.</p>
+    </div>
+    <div class="incentive-badge">
+      <div class="incentive-badge-num">Opt&#8209;In</div>
+      <div class="incentive-badge-label">Explicit consent captured</div>
+    </div>
+  </div>
+
+  <div class="activation-flow">
+    <div class="act-step">
+      <div class="act-num">01</div>
+      <div class="act-title">Upload List</div>
+      <div class="act-desc">Upload broker agent lists as a Custom Audience on Meta</div>
+    </div>
+    <div class="act-step" style="border-top:2px solid var(--accent);">
+      <div class="act-num">02</div>
+      <div class="act-title">Free Incentive Ad</div>
+      <div class="act-desc">Sellers Shield offers a free tool or trial — value-first, no hard sell</div>
+    </div>
+    <div class="act-step" style="border-top:2px solid var(--accent3);">
+      <div class="act-num">03</div>
+      <div class="act-title">Consent Captured</div>
+      <div class="act-desc">Agent opts in to claim the incentive &rarr; explicit permission to contact</div>
+    </div>
+    <div class="act-step">
+      <div class="act-num">04</div>
+      <div class="act-title">Lookalike Expand</div>
+      <div class="act-desc">Build lookalike audiences from the activated segment</div>
+    </div>
+    <div class="act-step" style="border-top:2px solid var(--accent4);">
+      <div class="act-num">05</div>
+      <div class="act-title">Enroll in Sequence</div>
+      <div class="act-desc">Opted-in agents enrolled in HubSpot — clean list, high deliverability</div>
+    </div>
+  </div>
+
+  <div style="width:100%;max-width:1100px;">
+    <h3 style="margin-bottom:14px;font-size:10px;color:var(--muted);letter-spacing:2px;">Expected Impact on Email Metrics</h3>
+    <div class="bar-chart">
+      <div class="bar-row">
+        <div class="bar-label">Open Rate (cold)</div>
+        <div class="bar-track"><div class="bar-fill" style="width:35%;background:rgba(232,79,107,.55);">Cold: 35%</div></div>
+        <div class="bar-val" style="color:var(--hot);">35%</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Open Rate (warmed)</div>
+        <div class="bar-track"><div class="bar-fill" style="width:65%;background:linear-gradient(90deg,var(--accent3),#1ab870);">Warmed: 65%+</div></div>
+        <div class="bar-val" style="color:var(--accent3);">65%+</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Bounce Rate (cold)</div>
+        <div class="bar-track"><div class="bar-fill" style="width:28%;background:rgba(232,79,107,.55);">Cold: High</div></div>
+        <div class="bar-val" style="color:var(--hot);">High</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Bounce Rate (warmed)</div>
+        <div class="bar-track"><div class="bar-fill" style="width:8%;background:linear-gradient(90deg,var(--accent3),#1ab870);">Low</div></div>
+        <div class="bar-val" style="color:var(--accent3);">Low</div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label">Impression Freq (1 wk)</div>
+        <div class="bar-track"><div class="bar-fill" style="width:70%;background:linear-gradient(90deg,var(--accent),var(--accent-light));">5&ndash;7&times; / day on Meta</div></div>
+        <div class="bar-val" style="color:var(--accent);">5&ndash;7&times;</div>
+      </div>
+    </div>
+    <p class="bar-note">Even without consent clicks, high frequency builds brand familiarity — cold calls and cold emails perform better as a result.</p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     SLIDE 7 — PROGRAMMATIC SEO / LLM
+════════════════════════════════════ -->
+<section class="slide" id="s7">
+  <span class="slide-number">06 &mdash; Organic Growth</span>
+  <div class="tag tag-green">Programmatic SEO + LLM Visibility</div>
+  <h2>Own the Conversation Before They Search</h2>
+  <div class="seo-grid" style="margin-top:26px;">
+    <div class="seo-stat-stack">
+      <div class="big-stat" style="border-top:2px solid var(--accent3);">
+        <div class="big-num" style="color:var(--accent3);">3,000</div>
+        <div class="big-label">Organic clicks since Dec 15, 2025 on AMG's own site</div>
+      </div>
+      <div class="big-stat" style="border-top:2px solid var(--accent4);">
+        <div class="big-num" style="color:var(--accent4);">3,500</div>
+        <div class="big-label">Words per article — authoritative, educational content</div>
+      </div>
+      <div class="big-stat" style="border-top:2px solid var(--accent);">
+        <div class="big-num" style="color:var(--accent);">52–58%</div>
+        <div class="big-label">LLM referral engagement rate vs. avg site traffic</div>
+      </div>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:14px;">LLM Traffic — What We'll Target for Sellers Shield</h3>
+      <table class="llm-table">
+        <tr>
+          <th>Query Type</th>
+          <th>Current Visibility</th>
+          <th>Target</th>
+        </tr>
+        <tr>
+          <td>"What is Sellers Shield?"</td>
+          <td><span class="pill pill-high">Branded</span></td>
+          <td>Maintain</td>
+        </tr>
+        <tr>
+          <td>"How to protect yourself when selling a home"</td>
+          <td><span class="pill pill-low">Not showing</span></td>
+          <td>Own it</td>
+        </tr>
+        <tr>
+          <td>"Seller disclosure requirements by state"</td>
+          <td><span class="pill pill-low">Not showing</span></td>
+          <td>Own it</td>
+        </tr>
+        <tr>
+          <td>"Best tools for real estate agents to protect clients"</td>
+          <td><span class="pill pill-low">Not showing</span></td>
+          <td>Own it</td>
+        </tr>
+        <tr>
+          <td>"What do listing agents need to know about seller liability?"</td>
+          <td><span class="pill pill-low">Not showing</span></td>
+          <td>Own it</td>
+        </tr>
+      </table>
+      <div class="insight-block">
+        <p style="font-size:12px;"><strong style="color:var(--accent3);">The shift happening now:</strong> The buying journey is multi-touchpoint. Agents and buyers ask LLMs before they Google. Before they click an ad. We buy Sellers Shield's real estate in those answers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     SLIDE 8 — ROADMAP
+════════════════════════════════════ -->
+<section class="slide" id="s8">
+  <span class="slide-number">07 &mdash; Roadmap</span>
+
+  <div class="tag tag-purple">Proposed Next Steps</div>
+  <h2>From Strategy to Execution</h2>
+  <div class="timeline" style="margin-top:26px;">
+    <div class="timeline-item">
+      <div class="tl-phase" style="color:var(--accent);">Phase 1<br><span style="color:var(--muted);font-weight:400;">Weeks 1–2</span></div>
+      <div class="tl-dot" style="background:var(--accent);"></div>
+      <div class="tl-content">
+        <div class="tl-title">Strategy Sprint &amp; Audit</div>
+        <ul class="tl-items">
+          <li>Map out full funnel with Sellers Shield team (Morgan + Liam)</li>
+          <li>Audit current HubSpot sequences and list quality</li>
+          <li>SEM Rush AI visibility baseline for target keywords</li>
+          <li>Define lead scoring criteria: what makes a hot agent vs. cold?</li>
+        </ul>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-phase" style="color:var(--accent4);">Phase 2<br><span style="color:var(--muted);font-weight:400;">Weeks 3–5</span></div>
+      <div class="tl-dot" style="background:var(--accent4);"></div>
+      <div class="tl-content">
+        <div class="tl-title">List Activation Campaign</div>
+        <ul class="tl-items">
+          <li>Upload broker agent lists to Meta Custom Audiences</li>
+          <li>Launch free incentive ad — Sellers Shield offers agents a free tool in exchange for opt-in</li>
+          <li>Set frequency cap at 5–7x per day for priority call lists</li>
+          <li>Build lookalike audiences from responders</li>
+        </ul>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-phase" style="color:var(--accent3);">Phase 3<br><span style="color:var(--muted);font-weight:400;">Weeks 4–7</span></div>
+      <div class="tl-dot" style="background:var(--accent3);"></div>
+      <div class="tl-content">
+        <div class="tl-title">AI Agent Build &amp; Programmatic SEO Launch</div>
+        <ul class="tl-items">
+          <li>Build Messenger AI agent trained on Sellers Shield content and FAQs</li>
+          <li>Integrate with HubSpot for lead capture and CRM updates</li>
+          <li>Deploy website chat agent for 24/7 coverage</li>
+          <li>Launch first batch of programmatic SEO articles targeting non-branded queries</li>
+        </ul>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-phase" style="color:var(--hot);">Phase 4<br><span style="color:var(--muted);font-weight:400;">Weeks 7–10</span></div>
+      <div class="tl-dot" style="background:var(--hot);"></div>
+      <div class="tl-content">
+        <div class="tl-title">Full Funnel Live + Optimization</div>
+        <ul class="tl-items">
+          <li>WhatsApp nurture agent activated for bottom-of-funnel</li>
+          <li>Unified dashboard set up for Morgan and Liam — human override enabled</li>
+          <li>Review LLM referral traffic in GA4 (filter: source/medium &rarr; "chat")</li>
+          <li>Weekly performance reviews: lead scores, open rates, conversion rates</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     SLIDE 9 — PRICING
+════════════════════════════════════ -->
+<section class="slide" id="s9">
+  <span class="slide-number">08 &mdash; Investment</span>
+  <div class="tag tag-purple">Pricing</div>
+  <h2>Simple, All-In Pricing</h2>
+  <p style="max-width:600px;margin-bottom:32px;">One monthly retainer covers every AI service in this proposal — no platform fees passed through, no per-seat charges, no surprises.</p>
+
+  <div class="pricing-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:20px;width:100%;max-width:900px;margin-bottom:24px;">
+
+    <!-- Monthly -->
+    <div style="background:linear-gradient(140deg,rgba(88,50,209,.18),rgba(88,50,209,.05));border:1px solid rgba(88,50,209,.35);border-radius:3px;padding:36px 32px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent-light);margin-bottom:14px;">Monthly Retainer</div>
+      <div style="font-family:'Playfair Display',serif;font-size:clamp(48px,6vw,72px);font-weight:900;line-height:1;color:#fff;">$4,250</div>
+      <div style="font-size:13px;color:var(--muted);margin-top:8px;letter-spacing:.5px;">per month &mdash; cancel anytime</div>
+      <div style="height:1px;background:var(--border);margin:22px 0;"></div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
+        <li style="font-size:12px;color:var(--text);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--accent-light);font-size:10px;margin-top:2px;flex-shrink:0;">&#10003;</span>Messenger AI Agent — trained on Sellers Shield content</li>
+        <li style="font-size:12px;color:var(--text);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--accent-light);font-size:10px;margin-top:2px;flex-shrink:0;">&#10003;</span>Website chat agent — 24/7 inbound coverage</li>
+        <li style="font-size:12px;color:var(--text);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--accent-light);font-size:10px;margin-top:2px;flex-shrink:0;">&#10003;</span>WhatsApp nurture agent — bottom-of-funnel conversion</li>
+        <li style="font-size:12px;color:var(--text);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--accent-light);font-size:10px;margin-top:2px;flex-shrink:0;">&#10003;</span>HubSpot integration — lead capture and CRM sync</li>
+        <li style="font-size:12px;color:var(--text);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--accent-light);font-size:10px;margin-top:2px;flex-shrink:0;">&#10003;</span>Programmatic SEO content — ongoing article production</li>
+        <li style="font-size:12px;color:var(--text);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--accent-light);font-size:10px;margin-top:2px;flex-shrink:0;">&#10003;</span>Unified dashboard — full human override at any time</li>
+        <li style="font-size:12px;color:var(--text);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--accent-light);font-size:10px;margin-top:2px;flex-shrink:0;">&#10003;</span>Weekly performance reporting — lead scores, conversions, trends</li>
+      </ul>
+    </div>
+
+    <!-- Setup + summary -->
+    <div style="display:flex;flex-direction:column;gap:16px;">
+
+      <div style="background:var(--card);border:1px solid var(--border);border-top:2px solid var(--accent4);border-radius:3px;padding:28px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent4);margin-bottom:12px;">One-Time Setup Fee</div>
+        <div style="font-family:'Playfair Display',serif;font-size:clamp(36px,4vw,52px);font-weight:900;line-height:1;color:#fff;">$2,000</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:6px;">Paid once at kickoff</div>
+        <div style="height:1px;background:var(--border);margin:18px 0;"></div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+          <li style="font-size:12px;color:var(--muted);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--accent4);font-size:10px;margin-top:2px;flex-shrink:0;">&#10003;</span>AI agent build, training, and testing</li>
+          <li style="font-size:12px;color:var(--muted);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--accent4);font-size:10px;margin-top:2px;flex-shrink:0;">&#10003;</span>HubSpot workflow and sequence configuration</li>
+          <li style="font-size:12px;color:var(--muted);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--accent4);font-size:10px;margin-top:2px;flex-shrink:0;">&#10003;</span>Meta Custom Audience setup and ad launch</li>
+          <li style="font-size:12px;color:var(--muted);display:flex;gap:10px;align-items:flex-start;"><span style="color:var(--accent4);font-size:10px;margin-top:2px;flex-shrink:0;">&#10003;</span>Dashboard access and team onboarding</li>
+        </ul>
+      </div>
+
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:3px;padding:24px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:16px;">Investment Summary</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);">
+          <span style="font-size:12px;color:var(--muted);">Month 1 (setup + retainer)</span>
+          <span style="font-size:14px;font-weight:700;color:var(--text);">$6,250</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0 0;">
+          <span style="font-size:12px;color:var(--muted);">Month 2 onwards</span>
+          <span style="font-size:14px;font-weight:700;color:var(--text);">$4,250 / mo</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<!-- ════════════════════════════════════
+     SLIDE 10 — CTA
+════════════════════════════════════ -->
+<section class="slide" id="s10">
+  <div class="tag tag-purple">Let's Build This</div>
+  <h2>One Connected System.<br>Every Touchpoint Covered.</h2>
+  <p style="margin-top:14px; max-width:520px;">You've been marketing without a real strategy. This is the strategy — let's map it out properly and press go.</p>
+  <div class="cta-boxes">
+    <div class="cta-box">
+      <div class="cta-num">3</div>
+      <div class="cta-label">Core pillars: AI Agents &middot; List Activation &middot; LLM SEO</div>
+    </div>
+    <div class="cta-box">
+      <div class="cta-num">10<span style="font-size:18px;font-family:'Inter Tight',sans-serif;font-weight:600;"> wk</span></div>
+      <div class="cta-label">Full system live from kickoff to optimization</div>
+    </div>
+    <div class="cta-box">
+      <div class="cta-num">1</div>
+      <div class="cta-label">Unified dashboard — Morgan &amp; Liam in full control</div>
+    </div>
+  </div>
+  <div style="margin-top:36px;padding:22px 32px;background:var(--card);border:1px solid var(--border);border-radius:3px;text-align:center;max-width:520px;">
+    <p style="color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:2px;">Next Step</p>
+    <p style="font-size:15px;font-weight:700;margin-top:8px;color:var(--text);">Strategy session with Morgan + Liam &rarr; Full plan &amp; pricing proposal</p>
+    <p style="font-size:12px;color:var(--accent-light);margin-top:10px;letter-spacing:.5px;">Adventure Media Group &middot; Erica Newman &middot; Spiros Maragkoudakis</p>
+  </div>
+</section>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const nav = document.getElementById('navDots');
+
+  slides.forEach((slide, i) => {
+    const dot = document.createElement('div');
+    dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+    dot.title = slide.querySelector('h2, h1')?.textContent?.trim() || '';
+    dot.addEventListener('click', () => slide.scrollIntoView({ behavior: 'smooth' }));
+    nav.appendChild(dot);
+  });
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const idx = Array.from(slides).indexOf(e.target);
+        document.querySelectorAll('.nav-dot').forEach((d, i) => d.classList.toggle('active', i === idx));
+      }
+    });
+  }, { threshold: 0.5 });
+
+  slides.forEach(s => io.observe(s));
+</script>
+</body>
+</html>
