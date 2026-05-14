@@ -1,5 +1,6 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "/sellers_shield_ai_presentation.html" }
+    { "source": "/", "destination": "/sellers_shield_ai_presentation.html" },
+    { "source": "/prepory", "destination": "/prepory_audit.html" }
   ]
 }
