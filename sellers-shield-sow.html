@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Statement of Work — Sellers Shield AI Broker Acquisition Program</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --off-white:  #EFEDE7;
+      --near-black: #151514;
+      --purple:     #5832D1;
+      --red:        #D94000;
+      --warm-beige: #E8E5D9;
+      --muted-lav:  #7E75C7;
+      --font-h:     'Lora', Georgia, serif;
+      --font-b:     'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background: var(--off-white);
+      color: var(--near-black);
+      font-family: var(--font-b);
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    /* ── HEADER ────────────────────────────────── */
+    .site-header {
+      background: var(--off-white);
+      padding: 0 48px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(21,21,20,0.25);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .header-logo img { height: 30px; width: auto; }
+    .header-logo-text {
+      font-family: var(--font-b);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--near-black);
+      letter-spacing: 0.01em;
+    }
+    .header-badge {
+      background: var(--near-black);
+      color: var(--off-white);
+      font-family: var(--font-b);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 8px 16px;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    /* ── HERO ──────────────────────────────────── */
+    .hero {
+      background: var(--near-black);
+      padding: 80px 80px 72px;
+    }
+    .hero-inner { max-width: 1100px; margin: 0 auto; }
+    .eyebrow {
+      font-family: var(--font-b);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 20px;
+    }
+    .hero-title {
+      font-family: var(--font-h);
+      font-size: 54px;
+      font-weight: 400;
+      color: var(--off-white);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .hero-sub {
+      font-family: var(--font-b);
+      font-size: 17px;
+      color: rgba(239,237,231,0.55);
+      margin-bottom: 52px;
+    }
+    .hero-meta {
+      display: flex;
+      gap: 0;
+      border-top: 1px solid rgba(239,237,231,0.20);
+      padding-top: 32px;
+      flex-wrap: wrap;
+    }
+    .hero-meta-item {
+      padding-right: 48px;
+      margin-right: 48px;
+      border-right: 1px solid rgba(239,237,231,0.15);
+    }
+    .hero-meta-item:last-child { border-right: none; padding-right: 0; margin-right: 0; }
+    .meta-label {
+      font-family: var(--font-b);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: rgba(239,237,231,0.40);
+      margin-bottom: 6px;
+    }
+    .meta-value {
+      font-family: var(--font-b);
+      font-size: 14px;
+      color: var(--off-white);
+    }
+
+    /* ── LAYOUT ────────────────────────────────── */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+    .section { padding: 80px 0; }
+    .section-dark {
+      background: var(--near-black);
+      padding: 80px 80px;
+    }
+    .section-label {
+      font-family: var(--font-b);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: var(--font-h);
+      font-size: 36px;
+      font-weight: 400;
+      color: var(--near-black);
+      margin-bottom: 40px;
+      line-height: 1.25;
+    }
+    .section-title-light { color: var(--off-white); }
+    .divider { height: 1px; background: rgba(21,21,20,0.13); }
+
+    /* ── OVERVIEW ──────────────────────────────── */
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+    .overview-text p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: rgba(21,21,20,0.80);
+      margin-bottom: 18px;
+    }
+    .overview-text p:last-child { margin-bottom: 0; }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+    }
+    .stat-cell {
+      background: var(--near-black);
+      padding: 32px 24px;
+      text-align: center;
+    }
+    .stat-number {
+      font-family: var(--font-h);
+      font-size: 44px;
+      font-weight: 400;
+      color: var(--off-white);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .stat-label {
+      font-family: var(--font-b);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: rgba(239,237,231,0.50);
+    }
+
+    /* ── CONTEXT CARDS ─────────────────────────── */
+    .context-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+      margin-top: 0;
+    }
+    .context-card {
+      background: #fff;
+      border: 1px solid rgba(21,21,20,0.10);
+      padding: 32px;
+    }
+    .context-icon { margin-bottom: 20px; }
+    .context-card-title {
+      font-family: var(--font-h);
+      font-size: 17px;
+      font-style: italic;
+      text-transform: uppercase;
+      color: var(--near-black);
+      letter-spacing: 0.02em;
+      margin-bottom: 12px;
+    }
+    .context-card-body {
+      font-size: 14px;
+      line-height: 1.65;
+      color: rgba(21,21,20,0.68);
+    }
+
+    /* ── SERVICE CARDS (SCOPE) ─────────────────── */
+    .scope-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .service-card {
+      background: var(--off-white);
+      border: 1px solid rgba(21,21,20,0.11);
+      padding: 40px;
+    }
+    .service-card:nth-child(even) { background: #fff; }
+    .card-number-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .card-num {
+      font-family: var(--font-h);
+      font-size: 52px;
+      color: rgba(21,21,20,0.09);
+      line-height: 1;
+      min-width: 52px;
+    }
+    .card-rule { flex: 1; height: 1px; background: rgba(21,21,20,0.18); }
+    .card-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 32px;
+      margin-bottom: 16px;
+    }
+    .card-phase {
+      font-family: var(--font-b);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: rgba(21,21,20,0.38);
+      margin-bottom: 6px;
+    }
+    .card-title {
+      font-family: var(--font-h);
+      font-size: 21px;
+      font-style: italic;
+      text-transform: uppercase;
+      color: var(--near-black);
+      letter-spacing: 0.02em;
+    }
+    .badge {
+      background: var(--purple);
+      color: var(--off-white);
+      font-family: var(--font-b);
+      font-size: 10px;
+      font-weight: 500;
+      padding: 5px 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .badge-red { background: var(--red); }
+    .badge-dark { background: var(--near-black); }
+    .badge-lav { background: var(--muted-lav); }
+    .card-body {
+      font-size: 15px;
+      line-height: 1.65;
+      color: rgba(21,21,20,0.68);
+      max-width: 700px;
+      margin-bottom: 24px;
+    }
+    .card-deliverables {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 32px;
+      list-style: none;
+    }
+    .card-deliverables li {
+      font-size: 14px;
+      color: var(--near-black);
+      line-height: 1.5;
+    }
+    .card-deliverables li::before {
+      content: '+ ';
+      color: var(--red);
+      font-weight: 600;
+    }
+
+    /* ── TIMELINE ──────────────────────────────── */
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2px;
+      margin-top: 48px;
+    }
+    .tl-item {
+      background: rgba(239,237,231,0.06);
+      border: 1px solid rgba(239,237,231,0.12);
+      padding: 32px;
+    }
+    .tl-dot {
+      width: 48px;
+      height: 48px;
+      background: var(--red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .tl-dot-num {
+      font-family: var(--font-h);
+      font-size: 20px;
+      color: var(--off-white);
+    }
+    .tl-month {
+      font-family: var(--font-b);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(239,237,231,0.40);
+      margin-bottom: 6px;
+    }
+    .tl-title {
+      font-family: var(--font-h);
+      font-size: 20px;
+      color: var(--off-white);
+      margin-bottom: 20px;
+    }
+    .tl-list { list-style: none; }
+    .tl-list li {
+      font-size: 13px;
+      color: rgba(239,237,231,0.60);
+      line-height: 1.5;
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(239,237,231,0.08);
+    }
+    .tl-list li:last-child { border-bottom: none; }
+    .tl-list li::before {
+      content: '+ ';
+      color: var(--red);
+      font-weight: 600;
+    }
+
+    /* ── INVESTMENT TABLE ──────────────────────── */
+    .inv-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 40px;
+    }
+    .inv-table th {
+      font-family: var(--font-b);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: rgba(21,21,20,0.45);
+      padding: 12px 20px;
+      text-align: left;
+      border-bottom: 2px solid rgba(21,21,20,0.15);
+    }
+    .inv-table td {
+      padding: 16px 20px;
+      font-size: 14px;
+      border-bottom: 1px solid rgba(21,21,20,0.09);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+    .inv-table tr:hover td { background: rgba(21,21,20,0.02); }
+    .section-row td {
+      background: var(--near-black);
+      color: rgba(239,237,231,0.50);
+      font-family: var(--font-b);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 10px 20px;
+      border-bottom: none;
+    }
+    .section-row:hover td { background: var(--near-black) !important; }
+    .price-col {
+      font-family: var(--font-h);
+      font-size: 17px;
+      color: var(--near-black);
+      text-align: right;
+      white-space: nowrap;
+    }
+    .placeholder { color: rgba(21,21,20,0.28); font-style: italic; font-family: var(--font-b); font-size: 14px; }
+    .note {
+      font-size: 12px;
+      color: rgba(21,21,20,0.45);
+      margin-top: 20px;
+      font-style: italic;
+      line-height: 1.6;
+    }
+
+    /* ── TERMS ─────────────────────────────────── */
+    .terms-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 40px;
+    }
+    .term-card {
+      background: #fff;
+      border: 1px solid rgba(21,21,20,0.10);
+      padding: 28px 32px;
+    }
+    .term-title {
+      font-family: var(--font-h);
+      font-size: 16px;
+      font-style: italic;
+      text-transform: uppercase;
+      color: var(--near-black);
+      letter-spacing: 0.02em;
+      margin-bottom: 10px;
+    }
+    .term-body {
+      font-size: 14px;
+      line-height: 1.65;
+      color: rgba(21,21,20,0.65);
+    }
+
+    /* ── SIGNATURE ─────────────────────────────── */
+    .sig-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-top: 48px;
+    }
+    .sig-block { }
+    .sig-party {
+      font-family: var(--font-b);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: rgba(21,21,20,0.45);
+      margin-bottom: 40px;
+    }
+    .sig-line {
+      border-bottom: 1px solid rgba(21,21,20,0.28);
+      height: 44px;
+      margin-bottom: 8px;
+    }
+    .sig-line-label {
+      font-size: 11px;
+      color: rgba(21,21,20,0.38);
+      letter-spacing: 0.04em;
+      margin-bottom: 28px;
+    }
+
+    /* ── FOOTER ────────────────────────────────── */
+    .site-footer {
+      background: var(--near-black);
+      padding: 36px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 3px solid var(--red);
+    }
+    .footer-brand {
+      font-family: var(--font-h);
+      font-size: 18px;
+      color: var(--off-white);
+    }
+    .footer-meta {
+      font-family: var(--font-b);
+      font-size: 12px;
+      color: rgba(239,237,231,0.35);
+      letter-spacing: 0.02em;
+    }
+
+    /* ── SOW PROSE FORMAT ─────────────────────────── */
+    .sow-body {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .sow-item {
+      padding: 48px 0;
+      border-bottom: 1px solid rgba(21,21,20,0.12);
+    }
+    .sow-item:last-of-type {
+      border-bottom: none;
+    }
+    .sow-heading {
+      font-family: var(--font-h);
+      font-size: 20px;
+      font-style: italic;
+      text-transform: uppercase;
+      color: var(--near-black);
+      letter-spacing: 0.02em;
+      margin-bottom: 20px;
+    }
+    .sow-item p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: rgba(21,21,20,0.78);
+      max-width: 820px;
+      margin-bottom: 16px;
+    }
+    .sow-item p:last-child { margin-bottom: 0; }
+    .sow-includes {
+      font-size: 14px !important;
+      font-weight: 500 !important;
+      color: var(--near-black) !important;
+      margin-top: 24px !important;
+      margin-bottom: 12px !important;
+    }
+    .sow-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding-left: 4px;
+    }
+    .sow-list li {
+      font-size: 14px;
+      color: rgba(21,21,20,0.75);
+      line-height: 1.5;
+    }
+    .sow-list li::before {
+      content: '+ ';
+      color: var(--red);
+      font-weight: 600;
+    }
+    .sow-philosophy {
+      background: var(--near-black);
+      padding: 40px 48px;
+      margin-top: 48px;
+    }
+    .sow-philosophy p {
+      font-family: var(--font-h);
+      font-size: 18px;
+      font-style: italic;
+      color: var(--off-white);
+      line-height: 1.75;
+      max-width: 820px;
+    }
+
+    @media (max-width: 900px) {
+      .overview-grid, .context-grid, .timeline-grid, .terms-grid, .sig-grid {
+        grid-template-columns: 1fr;
+      }
+      .card-deliverables { grid-template-columns: 1fr; }
+      .hero { padding: 48px 32px; }
+      .hero-title { font-size: 38px; }
+      .container { padding: 0 24px; }
+      .section-dark { padding: 48px 24px; }
+      .hero-meta { gap: 24px; flex-direction: column; }
+      .hero-meta-item { border-right: none; padding-right: 0; margin-right: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ HEADER ══════════════════════════════════ -->
+  <header class="site-header">
+    <div class="header-logo">
+      <img src="data:image/png;base64,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AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAncAAAAAB5AgcAAACQJ3AAAAAAeQIHAAAAkCdwAAAAAHkCBwAAAJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAgPv/k0X9agAAAABJRU5ErkJggg==" alt="AdVenture Media">
+      <span class="header-logo-text">AdVenture Media</span>
+    </div>
+    <div class="header-badge">Statement of Work</div>
+  </header>
+
+  <!-- ══ HERO ════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Statement of Work &nbsp;·&nbsp; May 27, 2026</div>
+      <h1 class="hero-title">Sellers Shield AI<br>Broker Acquisition<br>Growth Program</h1>
+      <p class="hero-sub">Prepared by AdVenture Media Group &nbsp;·&nbsp; Erica Newman</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <div class="meta-label">Prepared For</div>
+          <div class="meta-value">Morgan Adams, Sellers Shield AI</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="meta-label">Date</div>
+          <div class="meta-value">May 27, 2026</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="meta-label">Engagement Type</div>
+          <div class="meta-value">Month-to-Month Retainer</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="meta-label">Primary Goal</div>
+          <div class="meta-value">Broker Lead Generation &amp; Funnel Development</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ EXECUTIVE OVERVIEW ══════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Overview</div>
+      <div class="overview-grid">
+        <div>
+          <h2 class="section-title">The Opportunity</h2>
+          <div class="overview-text">
+            <p>Sellers Shield AI has a proven product that saves real estate brokers thousands on E&amp;O insurance while reducing disclosure claims and liability exposure — but broker outreach currently relies on ad hoc HubSpot sequences and manual sales activity without a clear, repeatable funnel.</p>
+            <p>AdVenture Media will design and execute a full-funnel broker acquisition program: starting with deep discovery, building a compelling lead magnet that speaks directly to broker pain points, launching targeted paid media, overhauling email sequences, and deploying an AI-driven qualification layer to fill the sales pipeline with warm, demo-ready leads.</p>
+            <p>This engagement is structured month-to-month, giving Sellers Shield the flexibility to scale or adjust scope as results develop — with no long-term lock-in.</p>
+          </div>
+        </div>
+        <div>
+          <div class="stats-grid">
+            <div class="stat-cell">
+              <div class="stat-number">5</div>
+              <div class="stat-label">Program Phases</div>
+            </div>
+            <div class="stat-cell">
+              <div class="stat-number">M2M</div>
+              <div class="stat-label">Engagement Model</div>
+            </div>
+            <div class="stat-cell">
+              <div class="stat-number">AI</div>
+              <div class="stat-label">Lead Qualification</div>
+            </div>
+            <div class="stat-cell">
+              <div class="stat-number">360°</div>
+              <div class="stat-label">Funnel Coverage</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══ BACKGROUND / CONTEXT ════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Background</div>
+      <h2 class="section-title">What We Know About Your Buyers</h2>
+      <div class="context-grid">
+        <div class="context-card">
+          <div class="context-icon">
+            <i data-lucide="shield" style="color:#D94000;width:28px;height:28px;stroke-width:1.5;"></i>
+          </div>
+          <div class="context-card-title">The Broker Buyer</div>
+          <div class="context-card-body">Operating principals, directors of operations, and brokerage owners who control agent onboarding. They manage E&amp;O insurance across the entire brokerage and are acutely aware of claim history — even when their agents are not. One broker can bring five agents or five thousand.</div>
+        </div>
+        <div class="context-card">
+          <div class="context-icon">
+            <i data-lucide="trending-down" style="color:#5832D1;width:28px;height:28px;stroke-width:1.5;"></i>
+          </div>
+          <div class="context-card-title">Primary Pain Points</div>
+          <div class="context-card-body">E&amp;O insurance costs, disclosure-related claims, and the liability exposure that comes from hundreds of agents using inconsistent processes. Top carriers — Travelers, Hartford, Progressive — already recognize Sellers Shield and can waive deductibles. Brokers just need to know it.</div>
+        </div>
+        <div class="context-card">
+          <div class="context-icon">
+            <i data-lucide="alert-triangle" style="color:#151514;width:28px;height:28px;stroke-width:1.5;"></i>
+          </div>
+          <div class="context-card-title">Current Sales Gaps</div>
+          <div class="context-card-body">HubSpot sequences lack structure and follow-through. Outreach is reactive and ad hoc. No digital entry point exists for inbound broker interest. Sales team bandwidth is concentrated on EXP Realty, leaving the broader market largely unaddressed and no clear top-of-funnel hook.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══ THE FORMULA ══════════════════════════════ -->
+  <section class="section-dark">
+    <div style="max-width:1100px;margin:0 auto;">
+      <div class="section-label">Strategy</div>
+      <h2 class="section-title section-title-light">The Winning Formula</h2>
+      <p style="font-size:16px;color:rgba(239,237,231,0.60);max-width:640px;line-height:1.7;margin-bottom:48px;">Before building anything, we identify what actually makes the dish work — then build and deploy a system that consistently serves that dish to brokers. The formula is three interlocking components:</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;">
+
+        <div style="background:rgba(239,237,231,0.05);border:1px solid rgba(239,237,231,0.12);padding:36px 32px;">
+          <div style="font-family:'Lora',serif;font-size:52px;color:rgba(239,237,231,0.08);line-height:1;margin-bottom:20px;">01</div>
+          <div style="margin-bottom:20px;">
+            <i data-lucide="mail-open" style="color:#D94000;width:26px;height:26px;stroke-width:1.5;"></i>
+          </div>
+          <div style="font-family:'Lora',serif;font-size:19px;font-style:italic;text-transform:uppercase;color:#EFEDE7;letter-spacing:0.02em;margin-bottom:14px;">Newsletter + AI Follow-Up</div>
+          <p style="font-size:14px;color:rgba(239,237,231,0.60);line-height:1.65;">Newsletters and outreach sequences are passed directly into AI agents that handle follow-up, objection handling, and closing — so no warm lead goes cold while the sales team focuses on the hottest opportunities.</p>
+        </div>
+
+        <div style="background:rgba(88,50,209,0.15);border:1px solid rgba(88,50,209,0.35);padding:36px 32px;">
+          <div style="font-family:'Lora',serif;font-size:52px;color:rgba(239,237,231,0.08);line-height:1;margin-bottom:20px;">02</div>
+          <div style="margin-bottom:20px;">
+            <i data-lucide="zap" style="color:#5832D1;width:26px;height:26px;stroke-width:1.5;"></i>
+          </div>
+          <div style="font-family:'Lora',serif;font-size:19px;font-style:italic;text-transform:uppercase;color:#EFEDE7;letter-spacing:0.02em;margin-bottom:14px;">FOMO-Driven Lead Funnel</div>
+          <p style="font-size:14px;color:rgba(239,237,231,0.60);line-height:1.65;">A targeted campaign — paid media, a compelling lead magnet, and urgency-driven messaging — that gets brokers to raise their hand. Built around what brokers fear losing: competitive advantage, lower E&amp;O costs, and the agents who are already using this at competing brokerages.</p>
+        </div>
+
+        <div style="background:rgba(239,237,231,0.05);border:1px solid rgba(239,237,231,0.12);padding:36px 32px;">
+          <div style="font-family:'Lora',serif;font-size:52px;color:rgba(239,237,231,0.08);line-height:1;margin-bottom:20px;">03</div>
+          <div style="margin-bottom:20px;">
+            <i data-lucide="bot" style="color:#D94000;width:26px;height:26px;stroke-width:1.5;"></i>
+          </div>
+          <div style="font-family:'Lora',serif;font-size:19px;font-style:italic;text-transform:uppercase;color:#EFEDE7;letter-spacing:0.02em;margin-bottom:14px;">Value-Based Agent Experience</div>
+          <p style="font-size:14px;color:rgba(239,237,231,0.60);line-height:1.65;">Brokers who engage don't hit a form — they enter a conversational AI experience that delivers personalized value, answers their questions, and routes them to a demo booking. The posture shifts from "figure it out yourself" to "we do it for you."</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ══ SCOPE OF WORK ════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Scope of Work</div>
+      <h2 class="section-title">What We're Building</h2>
+
+      <div class="sow-body">
+
+        <!-- Item 1 -->
+        <div class="sow-item">
+          <div class="sow-heading">Discovery &amp; Broker Avatar Development</div>
+          <p>Before a single ad runs or a single email is sent, we build the foundation. Sellers Shield will provide call recordings or transcripts from broker sales conversations — successful and unsuccessful. Our team will analyze these in depth, mapping language patterns, decision triggers, objection responses, and the emotional drivers that move brokers to act. The output is a precise broker avatar that informs every downstream deliverable: what we say, where we say it, how we say it, and to whom.</p>
+          <p class="sow-includes">This phase includes, but is not limited to:</p>
+          <ul class="sow-list">
+            <li>Analysis of 10–20 broker call recordings or transcripts</li>
+            <li>Detailed broker buyer persona and avatar document</li>
+            <li>Objection map and handling playbook</li>
+            <li>Audit of existing HubSpot sequences and engagement data</li>
+            <li>Full-funnel architecture recommendation</li>
+            <li>Platform and channel strategy brief</li>
+          </ul>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="sow-item">
+          <div class="sow-heading">FOMO-Driven Lead Generation Asset</div>
+          <p>We will design and build a custom interactive tool — such as a Brokerage Risk &amp; Liability Assessment or E&amp;O Savings Calculator — that delivers immediate, personalized value to a broker in exchange for their contact information and consent. This is the top-of-funnel hook that makes cold traffic raise its hand. The asset is built around what brokers fear losing: lower E&amp;O premiums, reduced claim exposure, and the competitive advantage that other brokerages are already capturing.</p>
+          <p class="sow-includes">This phase includes, but is not limited to:</p>
+          <ul class="sow-list">
+            <li>Lead magnet concept development and copy</li>
+            <li>Interactive tool design and build</li>
+            <li>Conversion-optimized landing page</li>
+            <li>Results and thank-you page</li>
+            <li>HubSpot CRM integration for lead capture</li>
+            <li>A/B testing framework</li>
+          </ul>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="sow-item">
+          <div class="sow-heading">Email Sequence Overhaul</div>
+          <p>We will restructure Sellers Shield's existing HubSpot outreach from the ground up. Current sequences will be rewritten in a direct, conversational format — no heavy HTML templates, no formal signatures, just the kind of message a colleague would send — proven to generate higher open rates and replies. We will also implement engagement-based suppression logic: contacts who have not opened or clicked after six weeks are automatically removed from active sends. This isn't a minor housekeeping detail. Continuing to send to unengaged contacts damages sender reputation and eventually means that even your good contacts stop receiving emails. We fix that first.</p>
+          <p class="sow-includes">This phase includes, but is not limited to:</p>
+          <ul class="sow-list">
+            <li>Full audit and restructure of all HubSpot sequences</li>
+            <li>Sequence rewrite in direct, text-format style</li>
+            <li>6-week engagement threshold and suppression logic</li>
+            <li>Segmentation of non-openers into re-engagement flows</li>
+            <li>Sender reputation and deliverability review</li>
+            <li>Demo booking CTA integration throughout all sequences</li>
+          </ul>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="sow-item">
+          <div class="sow-heading">AI Qualification Agent</div>
+          <p>We will design, build, and deploy a conversational AI agent that brokers access via a URL embedded in email outreach. Rather than asking brokers to navigate a website and fill out a form, the agent meets them where they are — engaging in natural dialogue, answering product questions, collecting qualification data on behalf of the sales team, and routing warm leads directly to a demo booking flow. This is the shift from "figure it out yourself" to "we handle it for you" — which is exactly where buyer behavior is heading and exactly where this program needs to meet them.</p>
+          <p class="sow-includes">This phase includes, but is not limited to:</p>
+          <ul class="sow-list">
+            <li>AI agent design, training, and prompt development</li>
+            <li>Knowledge base build covering product, objections, and FAQs</li>
+            <li>Conversational flow architecture and quality testing</li>
+            <li>HubSpot CRM integration for all lead data capture</li>
+            <li>Calendar and demo booking integration</li>
+            <li>Testing, QA, and full deployment</li>
+          </ul>
+        </div>
+
+        <!-- Philosophy -->
+        <div class="sow-philosophy">
+          <p>We are relentless about attribution. Every touchpoint in this program — from the first ad impression to the demo booked — is tracked, measured, and accountable to a number. We eat, sleep, and breathe real-time performance data, and we are only dogmatic about one thing: the only measure of a good campaign is whether it consistently and cost-effectively moves the needle on the outcomes that matter most to Sellers Shield.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TIMELINE ══════════════════════════════════ -->
+  <section class="section-dark">
+    <div style="max-width:1100px;margin:0 auto;">
+      <div class="section-label">Timeline</div>
+      <h2 class="section-title section-title-light">Launch Schedule</h2>
+      <div class="timeline-grid">
+        <div class="tl-item">
+          <div class="tl-dot"><span class="tl-dot-num">1</span></div>
+          <div class="tl-month">Month 1</div>
+          <div class="tl-title">Discover &amp; Build</div>
+          <ul class="tl-list">
+            <li>Broker avatar &amp; persona development</li>
+            <li>Call transcript analysis (10–20 calls)</li>
+            <li>HubSpot sequence audit</li>
+            <li>Lead gen asset design &amp; build</li>
+            <li>Landing page development</li>
+            <li>CRM integration &amp; testing</li>
+          </ul>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="background:#5832D1;"><span class="tl-dot-num">2</span></div>
+          <div class="tl-month">Month 2</div>
+          <div class="tl-title">Launch &amp; Activate</div>
+          <ul class="tl-list">
+            <li>LinkedIn campaign launch</li>
+            <li>Email sequence relaunch</li>
+            <li>AI qualification agent go-live</li>
+            <li>Programmatic display live</li>
+            <li>Tracking &amp; analytics full setup</li>
+            <li>First performance report</li>
+          </ul>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="background:#151514;border:1px solid rgba(239,237,231,0.30);"><span class="tl-dot-num" style="font-size:16px;">M2M</span></div>
+          <div class="tl-month">Ongoing</div>
+          <div class="tl-title">Optimize &amp; Scale</div>
+          <ul class="tl-list">
+            <li>Monthly paid media management</li>
+            <li>Performance dashboards &amp; reporting</li>
+            <li>Sequence &amp; copy optimization</li>
+            <li>AI agent tuning and updates</li>
+            <li>Lead quality review with sales team</li>
+            <li>Monthly strategy call</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ INVESTMENT ════════════════════════════════ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Investment</div>
+      <h2 class="section-title">Program Pricing</h2>
+      <table class="inv-table">
+        <thead>
+          <tr>
+            <th style="width:38%;">Service</th>
+            <th style="width:38%;">What's Included</th>
+            <th style="width:10%;">Type</th>
+            <th style="width:14%;text-align:right;">Investment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Setup &amp; Development Fee</strong></td>
+            <td>Discovery, broker avatar, lead gen asset, email sequence overhaul, and AI qualification agent — all phases built and launched</td>
+            <td>One-Time</td>
+            <td class="price-col">$2,500</td>
+          </tr>
+          <tr>
+            <td><strong>Monthly Management Retainer</strong></td>
+            <td>Lead gen asset optimization, AI agent maintenance, email sequence management, reporting, and monthly strategy call</td>
+            <td>Monthly</td>
+            <td class="price-col">$4,000<span style="font-family:var(--font-b);font-size:13px;color:rgba(21,21,20,0.45);font-style:normal;">/mo</span></td>
+          </tr>
+          <tr>
+            <td><strong>Paid Media Management</strong></td>
+            <td>LinkedIn broker campaigns and programmatic display managed under our existing AdVenture Media partnership</td>
+            <td>Existing</td>
+            <td class="price-col" style="font-family:var(--font-b);font-size:13px;color:rgba(21,21,20,0.45);">Included</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="note">* Ad spend (LinkedIn, programmatic) is billed directly by advertising platforms to Sellers Shield. Paid media management is covered under the existing AdVenture Media engagement. This retainer is month-to-month — cancel anytime with 30 days' notice.</p>
+    </div>
+  </section>
+
+  <!-- ══ CTA ═══════════════════════════════════════ -->
+  <section style="background:var(--near-black);padding:80px 48px;">
+    <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:48px;flex-wrap:wrap;">
+      <div>
+        <div class="eyebrow" style="margin-bottom:12px;">Ready to Move Forward?</div>
+        <h2 style="font-family:var(--font-h);font-size:36px;font-weight:400;color:var(--off-white);line-height:1.25;max-width:540px;">Review and sign the proposal to get started.</h2>
+      </div>
+      <a href="https://proposals.adventureppc.com/preview/N3R3S0NKNm9PZEswQ3dNL2ZmT2NHZz09/pKgAJbbbbbc"
+         target="_blank"
+         style="display:inline-flex;align-items:center;gap:12px;background:#5832D1;color:#EFEDE7;font-family:var(--font-b);font-size:14px;font-weight:500;padding:0 32px;height:52px;text-decoration:none;letter-spacing:0.02em;white-space:nowrap;flex-shrink:0;">
+        Review &amp; Sign Proposal
+        <i data-lucide="arrow-right" style="width:16px;height:16px;stroke-width:2;"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="footer-brand">AdVenture Media</div>
+    <div class="footer-meta">Confidential &nbsp;·&nbsp; Prepared for Sellers Shield AI &nbsp;·&nbsp; May 27, 2026</div>
+  </footer>
+
+  <script>lucide.createIcons();</script>
+</body>
+</html>
